@@ -19,30 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
-    private val retrofitService = RetrofitService.getInstance()
-    private val adapter = CenterAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(MainViewModel::class.java)
-        recyclerViewMain.adapter = adapter
-
-        viewModel.center.observe(this, Observer {
-            Log.d(TAG, "onCreate: $it")
-            adapter.setCenterList(it)
-        })
-        viewModel.errorMessage.observe(this, Observer {
-        })
-
-        btnSearch.setOnClickListener {
-            val pincode = etPincode.text.toString().toInt()
-            val sdf = SimpleDateFormat("dd-MM-yyyy")
-            val currentDate = sdf.format(Date()).toString()
-            viewModel.findByPin(pincode, "07-09-2021")
-        }
 
     }
 }

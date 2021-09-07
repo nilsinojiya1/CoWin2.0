@@ -2,4 +2,9 @@
     <string name="app_name">CoWin 2.0</string>
     <string name="enter_pincode">Enter pincode</string>
     <string name="search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_by_pincode">Search By Pincode</string>
+    <string name="download_certificate">Download Certificate</string>
+    <string name="enter_date">Enter Date</string>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nilsinojiya.cowin20.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_findByPinFragment"
+            app:destination="@id/findByPinFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mobileVerifyFragment"
+            app:destination="@id/mobileVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findByPinFragment"
+        android:name="com.nilsinojiya.cowin20.fragments.FindByPinFragment"
+        android:label="fragment_find_by_pin"
+        tools:layout="@layout/fragment_find_by_pin" >
+        <action
+            android:id="@+id/action_findByPinFragment_to_findByPinListFragment"
+            app:destination="@id/findByPinListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mobileVerifyFragment"
+        android:name="com.nilsinojiya.cowin20.fragments.MobileVerifyFragment"
+        android:label="fragment_mobile_verify"
+        tools:layout="@layout/fragment_mobile_verify" />
+    <fragment
+        android:id="@+id/findByPinListFragment"
+        android:name="com.nilsinojiya.cowin20.fragments.FindByPinListFragment"
+        android:label="fragment_find_by_pin_list"
+        tools:layout="@layout/fragment_find_by_pin_list">
+
+
+        <argument
+            android:name="sessions"
+            app:argType="com.nilsinojiya.cowin20.models.Sessions" />
+    </fragment>
+</navigation>
