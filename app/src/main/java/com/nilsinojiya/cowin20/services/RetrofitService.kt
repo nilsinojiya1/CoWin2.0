@@ -19,7 +19,7 @@ interface RetrofitService {
     fun findByPin(
         @Query("pincode") pincode: Int,
         @Query("date") data: String
-    ): Call<Center>
+    ): Call<Sessions>
 
 
     companion object {

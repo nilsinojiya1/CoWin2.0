@@ -11,10 +11,10 @@ import com.nilsinojiya.cowin20.models.Sessions
 class CenterAdapter: RecyclerView.Adapter<MainViewHolder>() {
     private val TAG = this::class.java.simpleName
 
-    var sessions = mutableListOf<Sessions>()
+    var centers = mutableListOf<Center>()
 
-    fun setCenterList(center: Center) {
-        this.sessions = center.sessions.toMutableList()
+    fun setCenterList(sessions: Sessions) {
+        this.centers = sessions.centers.toMutableList()
         notifyDataSetChanged()
     }
 
@@ -25,13 +25,13 @@ class CenterAdapter: RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val center = sessions[position]
+        val center = centers[position]
         holder.binding.tvName.text = center.name
         Log.d(TAG, "onBindViewHolder: ${center.name}")
     }
 
     override fun getItemCount(): Int {
-        return sessions.size
+        return centers.size
     }
 }
 

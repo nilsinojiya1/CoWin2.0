@@ -13,18 +13,18 @@ import retrofit2.Response
 class MainViewModel(private val repository: MainRepository): ViewModel() {
     private val TAG = this::class.java.simpleName
 
-    val center = MutableLiveData<Center>()
+    val center = MutableLiveData<Sessions>()
     val errorMessage = MutableLiveData<String>()
 
     fun findByPin(pincode: Int, date: String) {
         Log.d(TAG, "findByPin: ")
         val response = repository.findByPin(pincode, date)
-        response.enqueue(object : Callback<Center> {
-            override fun onResponse(call: Call<Center>, response: Response<Center>) {
+        response.enqueue(object : Callback<Sessions> {
+            override fun onResponse(call: Call<Sessions>, response: Response<Sessions>) {
                 center.postValue(response.body())
                 Log.d(TAG, "onResponse: ${response.body()}")
             }
-            override fun onFailure(call: Call<Center>, t: Throwable) {
+            override fun onFailure(call: Call<Sessions>, t: Throwable) {
                 errorMessage.postValue(t.message)
                 Log.d(TAG, "onFailure: ${t.message}")
             }
