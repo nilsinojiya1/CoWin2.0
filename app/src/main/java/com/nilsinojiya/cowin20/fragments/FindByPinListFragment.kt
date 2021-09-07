@@ -26,7 +26,7 @@ class FindByPinListFragment : Fragment() {
         _binding = FragmentFindByPinListBinding.inflate(inflater, container, false)
 
 
-        val sessions: Sessions = arguments!!.getParcelable<Sessions>("CENTERS") as Sessions
+        val sessions: Sessions = requireArguments().getParcelable<Sessions>("CENTERS") as Sessions
         Log.d(TAG, "onCreateView: ${sessions.toString()}")
         adapter.setCenterList(sessions)
 
