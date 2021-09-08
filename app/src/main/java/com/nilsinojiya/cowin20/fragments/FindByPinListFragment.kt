@@ -21,6 +21,12 @@ import com.nilsinojiya.cowin20.viewModels.MyViewModelFactory
 import kotlinx.android.synthetic.main.fragment_find_by_pin.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import androidx.annotation.NonNull
+
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
+import kotlinx.android.synthetic.main.fragment_find_by_pin_list.*
+
 
 class FindByPinListFragment : Fragment() {
     private val TAG = this::class.java.simpleName
@@ -47,9 +53,19 @@ class FindByPinListFragment : Fragment() {
             Log.d(TAG, "onCreate: $it")
                 adapter.setCenterList(it)
                 adapter.notifyDataSetChanged()
+            if(adapter.itemCount > 0){
+                binding.lottieLoading.visibility = View.GONE
+                binding.recyclerViewMain.visibility = View.VISIBLE
+                binding.imgListEmpty.visibility = View.GONE
+            } else {
+                binding.lottieLoading.visibility = View.GONE
+                binding.recyclerViewMain.visibility = View.GONE
+                binding.imgListEmpty.visibility = View.VISIBLE
+            }
         })
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
         })
+
         return _binding.root
     }
 
