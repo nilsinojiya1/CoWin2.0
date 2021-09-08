@@ -68,7 +68,8 @@
         android:text="@string/search"
         android:textAllCaps="false"
         android:textSize="@dimen/_12sdp"
-        android:textColor="@color/biscay"/>
+        android:textColor="@color/biscay"
+        style="@style/TextAppearance.MaterialComponents.Button"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -30,35 +30,13 @@ class FindByPinFragment : Fragment() {
     private val TAG = this::class.java.simpleName
     private var _binding: FragmentFindByPinBinding? = null
     private val binding get() = _binding!!
-    lateinit var viewModel: MainViewModel
     private var navController: NavController? = null
-    private val retrofitService = RetrofitService.getInstance()
-    private val adapter = CenterAdapter()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding =  FragmentFindByPinBinding.inflate(inflater, container, false)
-
-        viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(MainViewModel::class.java)
-        //recyclerViewMain.adapter = adapter
-
-        viewModel.center.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "onCreate: $it")
-            adapter.setCenterList(it)
-            if(it.centers.size > 0)
-            {
-                val bundle = Bundle()
-                bundle.putParcelable("CENTERS", it) // Serializable Object
-
-                navController!!.navigate(R.id.action_findByPinFragment_to_findByPinListFragment, bundle)
-            }
-        })
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-        })
-
 
         binding.tvDate.text = SimpleDateFormat("dd-MM-yyyy").format(System.currentTimeMillis())
 
@@ -83,7 +61,10 @@ class FindByPinFragment : Fragment() {
         }
 
         binding.btnSearch.setOnClickListener {
-            viewModel.findByPin(binding.etPincode.text.toString().toInt(), tvDate.text.toString())
+            val bundle = Bundle()
+            bundle.putInt("PIN", binding.etPincode.text.toString().toInt())
+            bundle.putString("DATE", tvDate.text.toString())
+            navController!!.navigate(R.id.action_findByPinFragment_to_findByPinListFragment, bundle)
         }
 
 
