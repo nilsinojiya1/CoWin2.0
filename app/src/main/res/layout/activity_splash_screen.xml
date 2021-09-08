@@ -9,36 +9,39 @@
     android:background="@color/yellow_btn">
 
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAmin"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_210sdp"
-        app:lottie_rawRes="@raw/vaccine_animation"
-        app:lottie_autoPlay="true"/>
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/vaccine_animation" />
 
 
     <TextView
         android:id="@+id/tvTitle"
+        style="@style/TextAppearance.MaterialComponents.Headline3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
-        android:textColor="@color/biscay"
         android:layout_below="@id/lottieAmin"
+        android:fontFamily="@font/ubuntu"
         android:gravity="center_horizontal"
-        android:textStyle="bold"/>
+        android:text="@string/app_name"
+        android:textColor="@color/biscay"
+        android:textStyle="bold"
+        android:typeface="sans" />
 
     <TextView
         android:id="@+id/tvCaption"
+        style="@style/TextAppearance.MaterialComponents.Caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="#GetVaccinated"
-        style="@style/TextAppearance.MaterialComponents.Caption"
-        android:textColor="@color/biscay"
         android:layout_below="@id/tvTitle"
+        android:fontFamily="@font/ubuntu"
         android:gravity="center_horizontal"
+        android:text="#GetVaccinated"
+        android:textColor="@color/biscay"
+        android:textSize="@dimen/_16sdp"
         android:textStyle="bold"
-        android:textSize="@dimen/_16sdp"/>
+        android:typeface="normal" />
 
 </RelativeLayout>

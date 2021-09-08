@@ -7,4 +7,14 @@
     <string name="search_by_pincode">Search By Pincode</string>
     <string name="download_certificate">Download Certificate</string>
     <string name="enter_date">Enter Date</string>
+    <string name="_2nd_dose">2nd Dose</string>
+    <string name="_1st_dose">1st Dose</string>
+    <string name="timedemo">09:10</string>
+    <string name="time">Time: </string>
+    <string name="name">Name</string>
+    <string name="_999">999</string>
+    <string name="cost">Cost: </string>
+    <string name="free">Free</string>
+    <string name="age">Age: </string>
+    <string name="vaccine">Vaccine: </string>
 </resources>

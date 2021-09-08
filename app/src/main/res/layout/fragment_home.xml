@@ -3,9 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal|center_vertical"
     tools:context=".fragments.HomeFragment"
     android:layout_margin="@dimen/_9sdp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_250sdp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_vaccine_pana"/>
 
     <Button
         android:id="@+id/btnFindByPin"
@@ -14,11 +19,17 @@
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_weight="2"
         android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/ubuntu"
+        android:textStyle="bold"
         android:textColor="@color/biscay"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/yellow_btn"
         android:text="@string/search_by_pincode"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        style="@style/TextAppearance.MaterialComponents.Button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
 
     <Button
         android:id="@+id/btnDownloadCertificate"
@@ -27,11 +38,14 @@
         android:layout_below="@+id/btnFindByPin"
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_weight="2"
+        android:fontFamily="@font/ubuntu"
+        android:textStyle="bold"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/yellow_btn"
         android:text="@string/download_certificate"
         android:textAllCaps="false"
         android:textSize="@dimen/_12sdp"
-        android:textColor="@color/biscay"/>
+        android:textColor="@color/biscay"
+        style="@style/TextAppearance.MaterialComponents.Button"/>
 
 </RelativeLayout>

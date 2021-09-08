@@ -22,6 +22,7 @@ data class Center (
     @SerializedName("available_capacity_dose2") var availableCapacityDose2 : Int,
     @SerializedName("fee") var fee : String,
     @SerializedName("min_age_limit") var minAgeLimit : Int,
+    @SerializedName("max_age_limit") var maxAgeLimit : Int,
     @SerializedName("allow_all_age") var allowAllAge : Boolean,
     @SerializedName("vaccine") var vaccine : String,
     @SerializedName("slots") var slots : List<String>

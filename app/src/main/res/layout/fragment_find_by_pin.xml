@@ -7,7 +7,7 @@
     android:background="@color/gray_bg"
     tools:context=".fragments.FindByPinFragment"
     android:gravity="center_vertical|center_horizontal"
-    android:layout_margin="@dimen/_9sdp">
+    android:padding="@dimen/_9sdp">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -34,14 +34,25 @@
         android:layout_marginEnd="@dimen/_5sdp">
 
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".8"
+            android:text="Date: "
+            android:fontFamily="@font/ubuntu"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/_12sdp"/>
+
+        <TextView
             android:id="@+id/tvDate"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:text="03/03/2021"
+            android:fontFamily="@font/ubuntu"
             android:textColor="@color/black"
             android:gravity="center_vertical"
-            android:textSize="@dimen/_16sdp"/>
+            android:textSize="@dimen/_12sdp"/>
 
         <Button
             android:id="@+id/btnChangedate"
@@ -51,8 +62,12 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_rounded"
             android:text="Change"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/ubuntu"
+            android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="@color/biscay"/>
+            android:textColor="@color/biscay"
+            style="@style/TextAppearance.MaterialComponents.Button"/>
 
     </LinearLayout>
 
@@ -68,16 +83,9 @@
         android:text="@string/search"
         android:textAllCaps="false"
         android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/ubuntu"
+        android:textStyle="bold"
         android:textColor="@color/biscay"
         style="@style/TextAppearance.MaterialComponents.Button"/>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_below="@id/btnSearch"/>
 
 </RelativeLayout>
