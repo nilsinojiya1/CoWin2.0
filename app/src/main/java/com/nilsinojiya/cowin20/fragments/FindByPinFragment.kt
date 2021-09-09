@@ -57,6 +57,7 @@ class FindByPinFragment : Fragment() {
 
         binding.btnSearch.setOnClickListener {
             val bundle = Bundle()
+            bundle.putString("FROM", "FindByPinFragment")
             bundle.putInt("PIN", binding.etPincode.text.toString().toInt())
             bundle.putString("DATE", tvDate.text.toString())
             navController!!.navigate(R.id.action_findByPinFragment_to_findByPinListFragment, bundle)

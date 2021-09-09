@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_mobileVerifyFragment"
             app:destination="@id/mobileVerifyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_findByStatesFragment"
+            app:destination="@id/findByStatesFragment" />
     </fragment>
     <fragment
         android:id="@+id/findByPinFragment"
@@ -41,5 +44,14 @@
         <argument
             android:name="sessions"
             app:argType="com.nilsinojiya.cowin20.models.Sessions" />
+    </fragment>
+    <fragment
+        android:id="@+id/findByStatesFragment"
+        android:name="com.nilsinojiya.cowin20.fragments.FindByStatesFragment"
+        android:label="fragment_find_by_states"
+        tools:layout="@layout/fragment_find_by_states" >
+        <action
+            android:id="@+id/action_findByStatesFragment_to_findByPinListFragment"
+            app:destination="@id/findByPinListFragment" />
     </fragment>
 </navigation>

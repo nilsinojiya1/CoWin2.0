@@ -32,6 +32,9 @@ class HomeFragment : Fragment() {
         binding.btnDownloadCertificate.setOnClickListener {
             navController!!.navigate(R.id.action_homeFragment_to_mobileVerifyFragment)
         }
+        binding.btnFindByStates.setOnClickListener {
+            navController!!.navigate(R.id.action_homeFragment_to_findByStatesFragment)
+        }
 
         return _binding?.root
     }

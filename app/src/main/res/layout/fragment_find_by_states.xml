@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_bg"
+    tools:context=".fragments.FindByPinFragment"
+    android:gravity="center_vertical|center_horizontal"
+    android:padding="@dimen/_9sdp">
+
+
+    <Spinner
+        android:id="@+id/spinnerState"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:background="@drawable/et_rounded"
+        android:paddingStart="@dimen/_15sdp"
+        android:textStyle="bold"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="@color/biscay"
+        android:fontFamily="@font/ubuntu"
+        android:gravity="center"/>
+
+
+    <Spinner
+        android:id="@+id/spinnerDistrict"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_below="@+id/spinnerState"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:background="@drawable/et_rounded"
+        android:paddingStart="@dimen/_15sdp"
+        android:gravity="center"
+        android:textStyle="bold"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="@color/biscay"
+        android:fontFamily="@font/ubuntu"/>
+
+    <LinearLayout
+        android:id="@+id/llDate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:orientation="horizontal"
+        android:layout_below="@id/spinnerDistrict"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".8"
+            android:text="Date: "
+            android:fontFamily="@font/ubuntu"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/_12sdp"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="03/03/2021"
+            android:fontFamily="@font/ubuntu"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/_12sdp"/>
+
+        <Button
+            android:id="@+id/btnChangedate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_rounded"
+            android:text="Change"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/ubuntu"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/biscay"
+            style="@style/TextAppearance.MaterialComponents.Button"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_below="@+id/llDate"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_weight="2"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/yellow_btn"
+        android:text="@string/search"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/ubuntu"
+        android:textStyle="bold"
+        android:textColor="@color/biscay"
+        style="@style/TextAppearance.MaterialComponents.Button"/>
+
+</RelativeLayout>

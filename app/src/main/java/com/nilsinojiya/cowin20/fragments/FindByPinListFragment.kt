@@ -46,7 +46,12 @@ class FindByPinListFragment : Fragment() {
 
         binding.recyclerViewMain.adapter = adapter
 
-        viewModel.findByPin(requireArguments().getInt("PIN",0), requireArguments().getString("DATE","0").toString())
+        if(requireArguments().getString("FROM") == "FindByPinFragment"){
+            viewModel.findByPin(requireArguments().getInt("PIN",0), requireArguments().getString("DATE","09/09/2021").toString())
+        } else if(requireArguments().getString("FROM") == "FindByStatesFragment") {
+            viewModel.findByDistrict(requireArguments().getInt("DISTRICT",0), requireArguments().getString("DATE","09/09/2021").toString())
+        }
+
 
 
         viewModel.sessions.observe(viewLifecycleOwner, Observer {
@@ -56,11 +61,11 @@ class FindByPinListFragment : Fragment() {
             if(adapter.itemCount > 0){
                 binding.lottieLoading.visibility = View.GONE
                 binding.recyclerViewMain.visibility = View.VISIBLE
-                binding.imgListEmpty.visibility = View.GONE
+                binding.llNoData.visibility = View.GONE
             } else {
                 binding.lottieLoading.visibility = View.GONE
                 binding.recyclerViewMain.visibility = View.GONE
-                binding.imgListEmpty.visibility = View.VISIBLE
+                binding.llNoData.visibility = View.VISIBLE
             }
         })
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {

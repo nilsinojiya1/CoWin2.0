@@ -50,6 +50,7 @@ class CenterAdapter: RecyclerView.Adapter<MainViewHolder>() {
             e.printStackTrace()
             holder.binding.tvTime.text = "9 AM"
         }
+        holder.binding.tvVaccine.text = center.vaccine
         //Log.d(TAG, "onBindViewHolder: ${center.name}")
     }
 

@@ -4,8 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.nilsinojiya.cowin20.models.Center
-import com.nilsinojiya.cowin20.models.Sessions
+import com.nilsinojiya.cowin20.models.*
 import com.nilsinojiya.cowin20.repositorys.MainRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +20,8 @@ class MainViewModel(private val repository: MainRepository): ViewModel() {
 
     val sessions = MutableLiveData<Sessions>()
     val errorMessage = MutableLiveData<String>()
+    val states = MutableLiveData<States>()
+    val districts = MutableLiveData<Districts>()
 
     fun findByPin(pincode: Int, date: String) {
         Log.d(TAG, "findByPin: ")
@@ -33,16 +34,46 @@ class MainViewModel(private val repository: MainRepository): ViewModel() {
                 Log.e(TAG, "onResponse: ${response.errorBody()}")
             }
         }
-
-        /*response.enqueue(object : Callback<Sessions> {
-            override fun onResponse(call: Call<Sessions>, response: Response<Sessions>) {
-                center.postValue(response.body())
-                Log.d(TAG, "onResponse: ${response.body()}")
-            }
-            override fun onFailure(call: Call<Sessions>, t: Throwable) {
-                errorMessage.postValue(t.message)
-                Log.d(TAG, "onFailure: ${t.message}")
-            }
-        })*/
     }
+    
+    fun getStates(){
+        Log.d(TAG, "getStates: ")
+        CoroutineScope(Dispatchers.IO).launch { 
+            val response = repository.getStates().awaitResponse()
+            if(response.isSuccessful){
+                states.postValue(response.body())
+                Log.d(TAG, "onResponse: ${Thread.currentThread().name}")
+            } else {
+                Log.d(TAG, "getStates: ${response.errorBody()}")
+            }
+        }
+    }
+
+    fun getDistricts(state: String){
+        Log.d(TAG, "getDistricts: ")
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getDistricts(state).awaitResponse()
+            if(response.isSuccessful){
+                districts.postValue(response.body())
+                Log.d(TAG, "onResponse: ${Thread.currentThread().name}")
+            } else {
+                Log.d(TAG, "getStates: ${response.errorBody()}")
+            }
+
+        }
+    }
+
+    fun findByDistrict(districtId: Int, date: String){
+        Log.d(TAG, "findByDistrict: ")
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.findByDistrict(districtId, date).awaitResponse()
+            if(response.isSuccessful){
+                sessions.postValue(response.body())
+                Log.d(TAG, "onResponse: ${Thread.currentThread().name}")
+            } else{
+                Log.e(TAG, "onResponse: ${response.errorBody()}")
+            }
+        }
+    }
+
 }

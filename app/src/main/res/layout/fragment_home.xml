@@ -30,22 +30,38 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 
-
     <Button
-        android:id="@+id/btnDownloadCertificate"
+        android:id="@+id/btnFindByStates"
+        style="@style/TextAppearance.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_below="@+id/btnFindByPin"
         android:layout_marginTop="@dimen/_11sdp"
         android:layout_weight="2"
-        android:fontFamily="@font/ubuntu"
-        android:textStyle="bold"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/yellow_btn"
+        android:fontFamily="@font/ubuntu"
+        android:text="@string/search_by_states"
+        android:textAllCaps="false"
+        android:textColor="@color/biscay"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnDownloadCertificate"
+        style="@style/TextAppearance.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_below="@+id/btnFindByStates"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_weight="2"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/yellow_btn"
+        android:fontFamily="@font/ubuntu"
         android:text="@string/download_certificate"
         android:textAllCaps="false"
-        android:textSize="@dimen/_12sdp"
         android:textColor="@color/biscay"
-        style="@style/TextAppearance.MaterialComponents.Button"/>
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

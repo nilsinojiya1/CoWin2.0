@@ -32,15 +32,41 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"/>
 
-    <ImageView
-        android:id="@+id/imgListEmpty"
+    <LinearLayout
+        android:id="@+id/llNoData"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
-        android:src="@mipmap/ic_out_of_stock"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgListEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300sdp"
+            android:src="@drawable/ic_no_data"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu"
+            android:gravity="center_horizontal"
+            android:text="@string/no_slots_available_please_try_later"
+            android:textColor="@color/biscay"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgListEmpty" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

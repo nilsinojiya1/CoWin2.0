@@ -17,4 +17,8 @@
     <string name="free">Free</string>
     <string name="age">Age: </string>
     <string name="vaccine">Vaccine: </string>
+    <string name="select_state">Select State</string>
+    <string name="select_districts">Select Districts</string>
+    <string name="search_by_states">Search By States</string>
+    <string name="no_slots_available_please_try_later">No slots available, Please try later.</string>
 </resources>
