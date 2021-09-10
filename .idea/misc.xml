@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/drawable/btn_rounded.xml" value="0.2635416666666667" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/drawable/et_rounded.xml" value="0.2635416666666667" />
+        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/drawable/ic_back_arrow.xml" value="0.18958333333333333" />
+        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/drawable/ic_bell_alert.xml" value="0.2635416666666667" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/activity_main.xml" value="0.24358974358974358" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/activity_splash_screen.xml" value="0.24739583333333334" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_pin.xml" value="0.23333333333333334" />
-        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_pin_list.xml" value="0.3244186046511628" />
+        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_pin_list.xml" value="0.2" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_states.xml" value="0.2" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/item_center.xml" value="0.264" />

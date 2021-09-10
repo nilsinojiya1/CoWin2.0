@@ -35,18 +35,13 @@ class FindByPinListFragment : Fragment() {
 
         binding.recyclerViewMain.adapter = adapter
 
-        if(requireArguments().getString("FROM") == "FindByPinFragment"){
-            viewModel.findByPin(requireArguments().getInt("PIN",0), requireArguments().getString("DATE","09/09/2021").toString())
-        } else if(requireArguments().getString("FROM") == "FindByStatesFragment") {
-            viewModel.findByDistrict(requireArguments().getInt("DISTRICT",0), requireArguments().getString("DATE","09/09/2021").toString())
-        }
-
-
+        setList()
 
         viewModel.sessions.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "onCreate: $it")
                 adapter.setCenterList(it)
                 adapter.notifyDataSetChanged()
+                adapter.filter.filter(query)
             if(adapter.itemCount > 0){
                 binding.lottieLoading.visibility = View.GONE
                 binding.recyclerViewMain.visibility = View.VISIBLE
@@ -129,6 +124,14 @@ class FindByPinListFragment : Fragment() {
             }
         }
 
+        binding.swipeRefreshList.setOnRefreshListener {
+            setList()
+        }
+
+        binding.ivBackArrow.setOnClickListener {
+            activity?.onBackPressed()
+        }
+
         return _binding.root
     }
 
@@ -149,4 +152,12 @@ class FindByPinListFragment : Fragment() {
         addFilter(query)
     }
 
+    private fun setList(){
+        if(requireArguments().getString("FROM") == "FindByPinFragment"){
+            viewModel.findByPin(requireArguments().getInt("PIN",0), requireArguments().getString("DATE","09/09/2021").toString())
+        } else if(requireArguments().getString("FROM") == "FindByStatesFragment") {
+            viewModel.findByDistrict(requireArguments().getInt("DISTRICT",0), requireArguments().getString("DATE","09/09/2021").toString())
+        }
+        binding.swipeRefreshList.isRefreshing = false
+    }
 }

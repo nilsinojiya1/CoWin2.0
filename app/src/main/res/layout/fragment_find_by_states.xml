@@ -20,7 +20,8 @@
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:textColor="@color/biscay"
         android:fontFamily="@font/ubuntu"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:spinnerMode="dialog"/>
 
 
     <Spinner
@@ -35,7 +36,8 @@
         android:textStyle="bold"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:textColor="@color/biscay"
-        android:fontFamily="@font/ubuntu"/>
+        android:fontFamily="@font/ubuntu"
+        android:spinnerMode="dialog"/>
 
     <LinearLayout
         android:id="@+id/llDate"
