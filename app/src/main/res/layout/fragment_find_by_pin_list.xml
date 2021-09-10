@@ -8,17 +8,143 @@
     tools:context=".fragments.FindByPinListFragment"
     android:layout_gravity="center">
 
+
+    <HorizontalScrollView
+        android:id="@+id/hsvChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:clickable="false"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:orientation="horizontal"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="Free"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAge18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="18+"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAge45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="45+"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCOVAXIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="COVAXIN"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold"
+                android:theme="@style/ChipsStyle" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCOVISHIELD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="COVISHIELD"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip1Dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="1st Dose"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2Dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:checkable="true"
+                android:fontFamily="@font/ubuntu"
+                android:text="2nd Dose"
+                android:textAllCaps="true"
+                android:textAppearance="@style/ChipsStyle"
+                android:textColor="@color/biscay"
+                android:textSize="@dimen/_9sdp"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:padding="@dimen/_5sdp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/hsvChipGroup" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieLoading"
@@ -55,7 +181,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ubuntu"
@@ -63,6 +188,7 @@
             android:text="@string/no_slots_available_please_try_later"
             android:textColor="@color/biscay"
             android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgListEmpty" />

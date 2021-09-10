@@ -8,24 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
-import com.nilsinojiya.cowin20.R
 import com.nilsinojiya.cowin20.adapters.CenterAdapter
-import com.nilsinojiya.cowin20.databinding.FragmentFindByPinBinding
 import com.nilsinojiya.cowin20.databinding.FragmentFindByPinListBinding
-import com.nilsinojiya.cowin20.models.Sessions
 import com.nilsinojiya.cowin20.repositorys.MainRepository
 import com.nilsinojiya.cowin20.services.RetrofitService
 import com.nilsinojiya.cowin20.viewModels.MainViewModel
 import com.nilsinojiya.cowin20.viewModels.MyViewModelFactory
-import kotlinx.android.synthetic.main.fragment_find_by_pin.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import androidx.annotation.NonNull
-
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
-import kotlinx.android.synthetic.main.fragment_find_by_pin_list.*
 
 
 class FindByPinListFragment : Fragment() {
@@ -34,6 +22,7 @@ class FindByPinListFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter = CenterAdapter()
     private lateinit var viewModel: MainViewModel
+    private var query: String = ""
     private val retrofitService = RetrofitService.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +60,93 @@ class FindByPinListFragment : Fragment() {
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
         })
 
+
+        binding.chipFree.setOnClickListener {
+            if(binding.chipFree.isChecked){
+                //adapter.filter.filter("free")
+                addQuery("free")
+            } else{
+                //adapter.filter.filter("")
+                removeQuery("free")
+            }
+        }
+
+        binding.chipAge45.setOnClickListener {
+            if(binding.chipAge45.isChecked){
+                //adapter.filter.filter("45+")
+                addQuery("45")
+            } else{
+                //adapter.filter.filter("")
+                removeQuery("45")
+            }
+        }
+
+        binding.chipAge18.setOnClickListener {
+            if(binding.chipAge18.isChecked){
+                //adapter.filter.filter("18+")
+                addQuery("18")
+            } else {
+                //adapter.filter.filter("")
+                removeQuery("18")
+            }
+        }
+        binding.chipCOVAXIN.setOnClickListener {
+            if(binding.chipCOVAXIN.isChecked){
+                //adapter.filter.filter("COVAXIN")
+                addQuery("COVAXIN")
+            } else {
+                //adapter.filter.filter("")
+                removeQuery("COVAXIN")
+            }
+        }
+        binding.chipCOVISHIELD.setOnClickListener {
+            if(binding.chipCOVISHIELD.isChecked){
+                //adapter.filter.filter("COVISHIELD")
+                addQuery("COVISHIELD")
+            } else {
+                //adapter.filter.filter("")
+                removeQuery("COVISHIELD")
+            }
+        }
+
+        binding.chip1Dose.setOnClickListener {
+            if(binding.chip1Dose.isChecked){
+                //adapter.filter.filter("COVISHIELD")
+                addQuery("1st_Dose")
+            } else {
+                //adapter.filter.filter("")
+                removeQuery("1st_Dose")
+            }
+        }
+
+        binding.chip2Dose.setOnClickListener {
+            if(binding.chip2Dose.isChecked){
+                //adapter.filter.filter("COVISHIELD")
+                addQuery("2nd_Dose")
+            } else {
+                //adapter.filter.filter("")
+                removeQuery("2nd_Dose")
+            }
+        }
+
         return _binding.root
+    }
+
+    private fun addFilter(query: String){
+        adapter.filter.filter(query)
+    }
+
+    private fun addQuery(string: String){
+        if(!query.contains(string)){
+            query = "$query$string"
+            addFilter(query)
+        }
+
+    }
+
+    private fun removeQuery(string: String){
+        query = query.replace("$string", "")
+        addFilter(query)
     }
 
 }

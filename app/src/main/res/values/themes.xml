@@ -22,4 +22,11 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
+    <style name="ChipsStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@font/ubuntu</item>
+    </style>
+
 </resources>
