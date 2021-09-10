@@ -11,10 +11,11 @@
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/activity_splash_screen.xml" value="0.24739583333333334" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_pin.xml" value="0.23333333333333334" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_pin_list.xml" value="0.2" />
-        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_states.xml" value="0.2" />
+        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_find_by_states.xml" value="0.264" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/item_center.xml" value="0.264" />
         <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/item_spinner_title_only.xml" value="0.16666666666666666" />
+        <entry key="..\:/Study/Android_Projects/Brainvire/CoWin20/app/src/main/res/layout/layout_loading.xml" value="0.24739583333333334" />
       </map>
     </option>
   </component>

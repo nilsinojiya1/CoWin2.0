@@ -21,4 +21,7 @@
     <string name="select_districts">Select Districts</string>
     <string name="search_by_states">Search By States</string>
     <string name="no_slots_available_please_try_later">No slots available, Please try later.</string>
+    <string name="date">Date:</string>
+    <string name="_03_03_2021">03/03/2021</string>
+    <string name="change">Change</string>
 </resources>

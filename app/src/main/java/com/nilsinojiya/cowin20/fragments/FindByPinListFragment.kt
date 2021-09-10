@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.nilsinojiya.cowin20.adapters.CenterAdapter
 import com.nilsinojiya.cowin20.databinding.FragmentFindByPinListBinding
+import com.nilsinojiya.cowin20.helper.Utility
 import com.nilsinojiya.cowin20.repositorys.MainRepository
 import com.nilsinojiya.cowin20.services.RetrofitService
 import com.nilsinojiya.cowin20.viewModels.MainViewModel
@@ -32,7 +33,7 @@ class FindByPinListFragment : Fragment() {
         _binding = FragmentFindByPinListBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(
             MainViewModel::class.java)
-
+        Utility.checkInternet(requireContext())
         binding.recyclerViewMain.adapter = adapter
 
         setList()
@@ -125,7 +126,11 @@ class FindByPinListFragment : Fragment() {
         }
 
         binding.swipeRefreshList.setOnRefreshListener {
-            setList()
+            if(Utility.checkInternet(requireContext())) {
+                setList()
+            } else {
+                binding.swipeRefreshList.isRefreshing = false
+            }
         }
 
         binding.ivBackArrow.setOnClickListener {

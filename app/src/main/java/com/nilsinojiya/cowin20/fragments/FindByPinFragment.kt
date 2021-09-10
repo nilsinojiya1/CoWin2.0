@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.nilsinojiya.cowin20.R
 import com.nilsinojiya.cowin20.databinding.FragmentFindByPinBinding
+import com.nilsinojiya.cowin20.helper.Utility
 import kotlinx.android.synthetic.main.fragment_find_by_pin.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,7 +28,7 @@ class FindByPinFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding =  FragmentFindByPinBinding.inflate(inflater, container, false)
-
+        Utility.checkInternet(requireContext())
         binding.tvDate.text = SimpleDateFormat("dd-MM-yyyy", Locale.US).format(System.currentTimeMillis())
 
         val cal = Calendar.getInstance()
@@ -56,11 +57,13 @@ class FindByPinFragment : Fragment() {
         }
 
         binding.btnSearch.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("FROM", "FindByPinFragment")
-            bundle.putInt("PIN", binding.etPincode.text.toString().toInt())
-            bundle.putString("DATE", tvDate.text.toString())
-            navController!!.navigate(R.id.action_findByPinFragment_to_findByPinListFragment, bundle)
+            if(Utility.checkInternet(requireActivity())){
+                val bundle = Bundle()
+                bundle.putString("FROM", "FindByPinFragment")
+                bundle.putInt("PIN", binding.etPincode.text.toString().toInt())
+                bundle.putString("DATE", tvDate.text.toString())
+                navController!!.navigate(R.id.action_findByPinFragment_to_findByPinListFragment, bundle)
+            }
         }
 
 

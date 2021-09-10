@@ -18,6 +18,7 @@ import com.nilsinojiya.cowin20.adapters.DistrictsAdapter
 import com.nilsinojiya.cowin20.adapters.StatesAdapter
 import com.nilsinojiya.cowin20.databinding.FragmentFindByPinBinding
 import com.nilsinojiya.cowin20.databinding.FragmentFindByStatesBinding
+import com.nilsinojiya.cowin20.helper.Utility
 import com.nilsinojiya.cowin20.models.District
 import com.nilsinojiya.cowin20.models.State
 import com.nilsinojiya.cowin20.repositorys.MainRepository
@@ -46,25 +47,28 @@ class FindByStatesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding =  FragmentFindByStatesBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(MainViewModel::class.java)
-        viewModel.getStates()
-        viewModel.getDistricts("1")
-        
+        if(Utility.checkInternet(requireActivity())) {
+            viewModel.getStates()
+            viewModel.getDistricts("1")
+        }
         viewModel.states.observe(viewLifecycleOwner, Observer {
             statesAdapter = StatesAdapter(requireContext(), it.states)
             binding.spinnerState.adapter = statesAdapter
             Log.d(TAG, "onCreateView: ${it.states}")
+
         })
 
         viewModel.districts.observe(viewLifecycleOwner, Observer { 
             districtsAdapter = DistrictsAdapter(requireContext(), it.districts)
             binding.spinnerDistrict.adapter = districtsAdapter
             Log.d(TAG, "onCreateView: ${it.districts}")
+            Utility.hideLoading()
         })
 
 
         binding.spinnerState.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-
+                Utility.displayLoadingWithText(activity, "Please wait...", false)
                 var state = statesAdapter.getItem(position) as State
                 viewModel.getDistricts(state.stateId.toString())
                 Log.d(TAG, "onItemSelected: $position + ${statesAdapter.getItem(position)}")
@@ -105,14 +109,16 @@ class FindByStatesFragment : Fragment() {
             datePickerDialog.show()
         }
         
-        binding.btnSearch.setOnClickListener { 
-            val district = binding.spinnerDistrict.selectedItem as District
-            Log.d(TAG, "onCreateView: ${district.districtId}")
-            val bundle = Bundle()
-            bundle.putString("FROM", "FindByStatesFragment")
-            bundle.putInt("DISTRICT", district.districtId)
-            bundle.putString("DATE", tvDate.text.toString())
-            navController!!.navigate(R.id.action_findByStatesFragment_to_findByPinListFragment, bundle)
+        binding.btnSearch.setOnClickListener {
+            if(Utility.checkInternet(requireContext())){
+                val district = binding.spinnerDistrict.selectedItem as District
+                Log.d(TAG, "onCreateView: ${district.districtId}")
+                val bundle = Bundle()
+                bundle.putString("FROM", "FindByStatesFragment")
+                bundle.putInt("DISTRICT", district.districtId)
+                bundle.putString("DATE", tvDate.text.toString())
+                navController!!.navigate(R.id.action_findByStatesFragment_to_findByPinListFragment, bundle)
+            }
         }
 
         return binding.root

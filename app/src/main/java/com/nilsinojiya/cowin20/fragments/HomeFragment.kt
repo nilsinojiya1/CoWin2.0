@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.nilsinojiya.cowin20.R
 import com.nilsinojiya.cowin20.databinding.FragmentHomeBinding
+import com.nilsinojiya.cowin20.helper.Utility
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -25,6 +26,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding =  FragmentHomeBinding.inflate(inflater, container, false)
+
+        Utility.checkInternet(requireContext())
 
         binding.btnFindByPin.setOnClickListener {
             navController!!.navigate(R.id.action_homeFragment_to_findByPinFragment)
