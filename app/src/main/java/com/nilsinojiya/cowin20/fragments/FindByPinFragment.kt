@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -17,7 +16,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -26,7 +24,6 @@ import com.nilsinojiya.cowin20.R
 import com.nilsinojiya.cowin20.databinding.FragmentFindByPinBinding
 import com.nilsinojiya.cowin20.helper.Utility
 import com.vmadalin.easypermissions.EasyPermissions
-import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import kotlinx.android.synthetic.main.fragment_find_by_pin.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,13 +38,12 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var _binding: FragmentFindByPinBinding? = null
     private val binding get() = _binding!!
     private var navController: NavController? = null
-    var currentLocation : Location? = null
-    var fusedLocationProviderClient: FusedLocationProviderClient? = null
+    private var fusedLocationProviderClient: FusedLocationProviderClient? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding =  FragmentFindByPinBinding.inflate(inflater, container, false)
         Utility.checkInternet(requireContext())
@@ -71,7 +67,7 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH))
-        datePickerDialog.datePicker.setMinDate(System.currentTimeMillis())
+        datePickerDialog.datePicker.minDate = System.currentTimeMillis()
         datePickerDialog.datePicker.setBackgroundColor(ContextCompat.getColor(requireContext(),
             R.color.yellow_btn))
 
@@ -106,10 +102,10 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         _binding = null
     }
 
-    private fun getPincode(latitude: Double, longitude: Double): String? {
+    private fun getPincode(latitude: Double, longitude: Double): String {
         val geocoder = Geocoder(context, Locale.getDefault())
 
-        var addresses: MutableList<Address> = geocoder.getFromLocation(latitude, longitude, 1);
+        val addresses: MutableList<Address> = geocoder.getFromLocation(latitude, longitude, 1)
 
         //val address = addresses[0].getAddressLine(0)
         //val city = addresses[0].locality
@@ -139,17 +135,17 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         )
     }
 
-    fun isLocationEnabled():Boolean{
-        var locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    private fun isLocationEnabled():Boolean{
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
 
     @SuppressLint("MissingPermission")
-    fun getLastLocation(){
+    private fun getLastLocation(){
         if(hasLocationPermission()){
             if(isLocationEnabled()){
                 fusedLocationProviderClient!!.lastLocation.addOnCompleteListener {
-                    var location:Location? = it.result
+                    val location:Location? = it.result
                     if(location == null){
                         Log.d(TAG, "getLastLocation: ")
                         NewLocationData()
@@ -164,29 +160,29 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
     @SuppressLint("MissingPermission")
-    fun NewLocationData(){
+    private fun NewLocationData(){
         Log.d(TAG, "NewLocationData: ")
-        var locationRequest =  LocationRequest()
+        val locationRequest =  LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = 0
         locationRequest.fastestInterval = 0
         locationRequest.numUpdates = 1
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
         fusedLocationProviderClient!!.requestLocationUpdates(
-            locationRequest,locationCallback,Looper.myLooper()
+            locationRequest,locationCallback,Looper.myLooper()!!
         )
     }
 
     private val locationCallback = object : LocationCallback(){
         override fun onLocationResult(locationResult: LocationResult) {
-            var lastLocation: Location = locationResult.lastLocation
+            val lastLocation: Location = locationResult.lastLocation
             Log.d(TAG,"your last last location: "+ lastLocation.longitude.toString())
             binding.etPincode.setText(getPincode(lastLocation.latitude, lastLocation.longitude))
         }
     }
 
-    override fun onPermissionsDenied(requestCode: Int, p: List<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(requireActivity(), p)) {
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(requireActivity(), perms)) {
             //SettingsDialog.Builder(requireActivity()).build().show()
         } else {
             requestLocationPermission()
