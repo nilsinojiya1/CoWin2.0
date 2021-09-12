@@ -11,17 +11,14 @@
 
     <Spinner
         android:id="@+id/spinnerState"
+        style="@style/SpinnerText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:background="@drawable/et_rounded"
+        android:gravity="center"
         android:paddingStart="@dimen/_15sdp"
         android:paddingEnd="@dimen/_15sdp"
-        android:textStyle="bold"
-        style="@style/TextAppearance.MaterialComponents.Caption"
-        android:textColor="@color/biscay"
-        android:fontFamily="@font/ubuntu"
-        android:gravity="center"
-        android:spinnerMode="dialog"/>
+        android:spinnerMode="dialog" />
 
 
     <Spinner
@@ -34,10 +31,7 @@
         android:paddingStart="@dimen/_15sdp"
         android:paddingEnd="@dimen/_15sdp"
         android:gravity="center"
-        android:textStyle="bold"
-        style="@style/TextAppearance.MaterialComponents.Caption"
-        android:textColor="@color/biscay"
-        android:fontFamily="@font/ubuntu"
+        style="@style/SpinnerText"
         android:spinnerMode="dialog"/>
 
     <LinearLayout
@@ -79,29 +73,28 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_rounded"
             android:text="@string/change"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_14sdp"
             android:fontFamily="@font/ubuntu"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="@color/biscay"
-            style="@style/TextAppearance.MaterialComponents.Button"/>
+            style="@style/ButtonStyle"/>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSearch"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_below="@+id/llDate"
         android:layout_marginTop="@dimen/_11sdp"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/yellow_btn"
+        android:fontFamily="@font/ubuntu"
         android:text="@string/search"
         android:textAllCaps="false"
-        android:textSize="@dimen/_12sdp"
-        android:fontFamily="@font/ubuntu"
-        android:textStyle="bold"
         android:textColor="@color/biscay"
-        style="@style/TextAppearance.MaterialComponents.Button"/>
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

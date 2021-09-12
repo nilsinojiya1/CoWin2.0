@@ -148,7 +148,7 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     val location:Location? = it.result
                     if(location == null){
                         Log.d(TAG, "getLastLocation: ")
-                        NewLocationData()
+                        newLocationData()
                     }else{
                         Log.d(TAG ,"Your Location:"+ location.longitude)
                         binding.etPincode.setText(getPincode(location.latitude, location.longitude))
@@ -160,7 +160,7 @@ class FindByPinFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
     @SuppressLint("MissingPermission")
-    private fun NewLocationData(){
+    private fun newLocationData(){
         Log.d(TAG, "NewLocationData: ")
         val locationRequest =  LocationRequest()
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY

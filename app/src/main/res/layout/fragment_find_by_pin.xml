@@ -62,17 +62,16 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_rounded"
             android:text="Change"
-            android:textSize="@dimen/_12sdp"
-            android:fontFamily="@font/ubuntu"
+            android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textColor="@color/biscay"
-            style="@style/TextAppearance.MaterialComponents.Button"/>
+            style="@style/ButtonStyle"/>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSearch"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_below="@+id/llDate"
@@ -80,12 +79,10 @@
         android:layout_weight="2"
         android:background="@drawable/btn_rounded"
         android:backgroundTint="@color/yellow_btn"
+        android:fontFamily="@font/ubuntu"
         android:text="@string/search"
         android:textAllCaps="false"
-        android:textSize="@dimen/_12sdp"
-        android:fontFamily="@font/ubuntu"
         android:textStyle="bold"
-        android:textColor="@color/biscay"
-        style="@style/TextAppearance.MaterialComponents.Button"/>
+        android:textSize="@dimen/_14sdp"/>
 
 </RelativeLayout>

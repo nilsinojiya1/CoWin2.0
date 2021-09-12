@@ -29,4 +29,21 @@
         <item name="android:textAppearance">@font/ubuntu</item>
     </style>
 
+    <style name="TextStyle" parent="Theme.CoWin20">
+        <item name="android:textColor">@color/biscay</item>
+        <item name="fontFamily">@font/ubuntu</item>
+    </style>
+
+    <style name="ButtonStyle" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textColor">@color/biscay</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="fontStyle">normal</item>
+    </style>
+
+    <style name="SpinnerText">
+        <item name="android:textColor">@color/biscay</item>
+        <item name="android:fontFamily">@font/ubuntu</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

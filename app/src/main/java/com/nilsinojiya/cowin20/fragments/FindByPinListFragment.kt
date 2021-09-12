@@ -15,28 +15,38 @@ import com.nilsinojiya.cowin20.repositorys.MainRepository
 import com.nilsinojiya.cowin20.services.RetrofitService
 import com.nilsinojiya.cowin20.viewModels.MainViewModel
 import com.nilsinojiya.cowin20.viewModels.MyViewModelFactory
+import androidx.core.app.NotificationManagerCompat
+import android.app.Notification
+import androidx.core.app.NotificationCompat
+import com.nilsinojiya.cowin20.R
+import com.nilsinojiya.cowin20.helper.App
+import java.util.*
 
 
 class FindByPinListFragment : Fragment() {
     private val TAG = this::class.java.simpleName
     private lateinit var _binding: FragmentFindByPinListBinding
-    private val binding get() = _binding!!
+    private val binding get() = _binding
     private val adapter = CenterAdapter()
     private lateinit var viewModel: MainViewModel
     private var query: String = ""
+    private var currentDate: String =""
     private val retrofitService = RetrofitService.getInstance()
+    private var notificationManager: NotificationManagerCompat? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentFindByPinListBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(
             MainViewModel::class.java)
         Utility.checkInternet(requireContext())
         binding.recyclerViewMain.adapter = adapter
+        notificationManager = NotificationManagerCompat.from(requireContext())
+        currentDate = requireArguments().getString("DATE","09/09/2021").toString()
 
-        setList()
+        setList(currentDate)
 
         viewModel.sessions.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "onCreate: $it")
@@ -46,11 +56,14 @@ class FindByPinListFragment : Fragment() {
             if(adapter.itemCount > 0){
                 binding.lottieLoading.visibility = View.GONE
                 binding.recyclerViewMain.visibility = View.VISIBLE
+                binding.hsvChipGroup.visibility = View.VISIBLE
                 binding.llNoData.visibility = View.GONE
+
             } else {
                 binding.lottieLoading.visibility = View.GONE
                 binding.recyclerViewMain.visibility = View.GONE
                 binding.llNoData.visibility = View.VISIBLE
+                binding.hsvChipGroup.visibility = View.GONE
             }
         })
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
@@ -66,7 +79,6 @@ class FindByPinListFragment : Fragment() {
                 removeQuery("free")
             }
         }
-
         binding.chipAge45.setOnClickListener {
             if(binding.chipAge45.isChecked){
                 //adapter.filter.filter("45+")
@@ -76,7 +88,6 @@ class FindByPinListFragment : Fragment() {
                 removeQuery("45")
             }
         }
-
         binding.chipAge18.setOnClickListener {
             if(binding.chipAge18.isChecked){
                 //adapter.filter.filter("18+")
@@ -104,7 +115,6 @@ class FindByPinListFragment : Fragment() {
                 removeQuery("COVISHIELD")
             }
         }
-
         binding.chip1Dose.setOnClickListener {
             if(binding.chip1Dose.isChecked){
                 //adapter.filter.filter("COVISHIELD")
@@ -114,7 +124,6 @@ class FindByPinListFragment : Fragment() {
                 removeQuery("1st_Dose")
             }
         }
-
         binding.chip2Dose.setOnClickListener {
             if(binding.chip2Dose.isChecked){
                 //adapter.filter.filter("COVISHIELD")
@@ -127,7 +136,7 @@ class FindByPinListFragment : Fragment() {
 
         binding.swipeRefreshList.setOnRefreshListener {
             if(Utility.checkInternet(requireContext())) {
-                setList()
+                setList(currentDate)
             } else {
                 binding.swipeRefreshList.isRefreshing = false
             }
@@ -135,6 +144,23 @@ class FindByPinListFragment : Fragment() {
 
         binding.ivBackArrow.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        binding.ivBellAlert.setOnClickListener {
+            testNotificationChannel()
+        }
+
+        binding.ibDateBack.setOnClickListener {
+            //Log.d(TAG, "onCreateView: ${Utility.dateToString(Utility.decrementDateByOne(Utility.stringToDate(currentDate)))}")
+            val date = Utility.dateToString(Utility.decrementDateByOne(Utility.stringToDate(currentDate)))
+            setList(date)
+
+        }
+
+        binding.ibDateNext.setOnClickListener {
+            //Log.d(TAG, "onCreateView: ${Utility.dateToString(Utility.incrementDateByOne(Utility.stringToDate(currentDate)))}")
+            val date = Utility.dateToString(Utility.incrementDateByOne(Utility.stringToDate(currentDate)))
+            setList(date)
         }
 
         return _binding.root
@@ -157,12 +183,33 @@ class FindByPinListFragment : Fragment() {
         addFilter(query)
     }
 
-    private fun setList(){
-        if(requireArguments().getString("FROM") == "FindByPinFragment"){
-            viewModel.findByPin(requireArguments().getInt("PIN",0), requireArguments().getString("DATE","09/09/2021").toString())
-        } else if(requireArguments().getString("FROM") == "FindByStatesFragment") {
-            viewModel.findByDistrict(requireArguments().getInt("DISTRICT",0), requireArguments().getString("DATE","09/09/2021").toString())
+    private fun setList(date: String){
+        if(Utility.checkInternet(requireContext())){
+            binding.lottieLoading.visibility = View.VISIBLE
+            if(requireArguments().getString("FROM") == "FindByPinFragment"){
+                viewModel.findByPin(requireArguments().getInt("PIN",0), date)
+            } else if(requireArguments().getString("FROM") == "FindByStatesFragment") {
+                viewModel.findByDistrict(requireArguments().getInt("DISTRICT",0), date)
+            }
+            currentDate = date
+            binding.tvDate.text = currentDate
         }
         binding.swipeRefreshList.isRefreshing = false
     }
+
+    private fun testNotificationChannel() {
+        val title: String = "Slots available"
+        val message: String = "this place"
+        val notification: Notification = NotificationCompat.Builder(requireContext(), App.CHANNEL_1_ID)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .build()
+        notificationManager!!.notify(1, notification)
+    }
+
+
+
 }

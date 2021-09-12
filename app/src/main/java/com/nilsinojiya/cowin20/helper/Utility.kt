@@ -11,6 +11,8 @@ import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
 import com.nilsinojiya.cowin20.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utility {
 
@@ -57,6 +59,31 @@ object Utility {
         }
         Toast.makeText(context, "No Internet!", Toast.LENGTH_SHORT).show()
         return false
+    }
+
+    fun stringToDate(d: String): Date{
+        val input = SimpleDateFormat("dd-MM-yyyy")
+        return input.parse(d)
+
+    }
+
+    fun dateToString(date: Date?): String{
+        val format = SimpleDateFormat("dd-MM-yyy")
+        return format.format(date)
+    }
+
+    fun incrementDateByOne(date: Date?): Date? {
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.DATE, 1)
+        return calendar.time
+    }
+
+    fun decrementDateByOne(date: Date?): Date? {
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.DATE, -1)
+        return calendar.time
     }
 
 }
