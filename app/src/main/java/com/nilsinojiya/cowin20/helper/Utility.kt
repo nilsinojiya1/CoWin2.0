@@ -1,6 +1,7 @@
 package com.nilsinojiya.cowin20.helper
 
 import android.app.Dialog
+import android.app.Notification
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,6 +11,8 @@ import android.util.Log
 import android.view.Window
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.nilsinojiya.cowin20.R
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,6 +20,7 @@ import java.util.*
 object Utility {
 
     var dialog: Dialog? = null
+    private var notificationManager: NotificationManagerCompat? = null
     fun displayLoadingWithText(context: Context?, text: String?, cancelable: Boolean) {
         dialog = Dialog(context!!)
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -84,6 +88,22 @@ object Utility {
         calendar.time = date
         calendar.add(Calendar.DATE, -1)
         return calendar.time
+    }
+
+    fun createNotification(context: Context, mssg: String) {
+        val title: String = "Slots Available"
+        val message: String = mssg
+        val notification: Notification = NotificationCompat.Builder(context, App.CHANNEL_1_ID)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(message))
+            .setOnlyAlertOnce(true)
+            .build()
+        notificationManager = NotificationManagerCompat.from(context)
+        notificationManager!!.notify(1, notification)
     }
 
 }

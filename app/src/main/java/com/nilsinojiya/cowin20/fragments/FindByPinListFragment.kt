@@ -18,9 +18,13 @@ import com.nilsinojiya.cowin20.viewModels.MyViewModelFactory
 import androidx.core.app.NotificationManagerCompat
 import android.app.Notification
 import androidx.core.app.NotificationCompat
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.nilsinojiya.cowin20.R
 import com.nilsinojiya.cowin20.helper.App
+import com.nilsinojiya.cowin20.helper.SlotCheckWorker
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class FindByPinListFragment : Fragment() {
@@ -32,7 +36,6 @@ class FindByPinListFragment : Fragment() {
     private var query: String = ""
     private var currentDate: String =""
     private val retrofitService = RetrofitService.getInstance()
-    private var notificationManager: NotificationManagerCompat? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +46,6 @@ class FindByPinListFragment : Fragment() {
             MainViewModel::class.java)
         Utility.checkInternet(requireContext())
         binding.recyclerViewMain.adapter = adapter
-        notificationManager = NotificationManagerCompat.from(requireContext())
         currentDate = requireArguments().getString("DATE","09/09/2021").toString()
 
         setList(currentDate)
@@ -147,7 +149,7 @@ class FindByPinListFragment : Fragment() {
         }
 
         binding.ivBellAlert.setOnClickListener {
-            testNotificationChannel()
+            startSlotCheckWorker()
         }
 
         binding.ibDateBack.setOnClickListener {
@@ -197,19 +199,9 @@ class FindByPinListFragment : Fragment() {
         binding.swipeRefreshList.isRefreshing = false
     }
 
-    private fun testNotificationChannel() {
-        val title: String = "Slots available"
-        val message: String = "this place"
-        val notification: Notification = NotificationCompat.Builder(requireContext(), App.CHANNEL_1_ID)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+    private fun startSlotCheckWorker(){
+        val periodicWorkRequest = PeriodicWorkRequest.Builder(SlotCheckWorker::class.java, 15, TimeUnit.MINUTES)
             .build()
-        notificationManager!!.notify(1, notification)
+        WorkManager.getInstance(requireContext()).enqueue(periodicWorkRequest)
     }
-
-
-
 }

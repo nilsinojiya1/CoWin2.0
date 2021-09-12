@@ -81,4 +81,7 @@ dependencies {
     implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
 
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+
+    def work_version = "2.6.0"
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 }

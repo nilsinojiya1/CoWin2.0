@@ -1,6 +1,7 @@
 package com.nilsinojiya.cowin20.helper
 
 import android.app.Application
+import android.app.Notification
 import android.app.NotificationManager
 
 import android.app.NotificationChannel
@@ -30,6 +31,7 @@ class App: Application() {
                 NotificationManager.IMPORTANCE_HIGH
             )
             channel1.description = "This is Channel for slots availability notification"
+            channel1.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel1)
         }
