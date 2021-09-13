@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_25sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_gravity="center"
+    android:elevation="@dimen/_5sdp"
+    app:cardElevation="@dimen/_5sdp"
+    android:theme="@style/Theme.CoWin20">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/set_alert"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/biscay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupOnOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:singleLine="true"
+            app:singleSelection="true"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="On"
+                style="@style/ChoiseChip"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Off"
+                style="@style/ChoiseChip"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupVaccine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroupOnOff"
+            app:singleLine="true"
+            app:singleSelection="true"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCOVAXIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COVAXIN"
+                style="@style/ChoiseChip"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCOVISHIELD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COVISHIELD"
+                style="@style/ChoiseChip"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupDose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroupVaccine"
+            app:singleLine="true"
+            app:singleSelection="true"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:theme="@style/Theme.MaterialComponents.Light">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip1Dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dose 1"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                style="@style/ChoiseChip"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2Dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dose 2"
+                style="@style/ChoiseChip"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:chipStrokeColor="@color/selector_chip_stroke"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPincode"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/et_rounded"
+            android:hint="@string/enter_pincode"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_9sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroupDose"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_marginBottom="@dimen/_9sdp"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"/>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/biscay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPincode"
+            android:layout_marginTop="@dimen/_9sdp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="2"
+            android:backgroundTint="#F7F7F7"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view1">
+
+            <Button
+                android:id="@+id/btnClose"
+                style="@style/TextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F7F7F7"
+                android:text="Close"
+                android:textSize="@dimen/_18sdp"
+                android:textAllCaps="false"/>
+
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@color/biscay" />
+
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/TextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F7F7F7"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_18sdp"/>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

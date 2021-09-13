@@ -10,18 +10,18 @@
     android:padding="@dimen/_9sdp">
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPincode"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_42sdp"
-            android:hint="@string/enter_pincode"
-            android:inputType="number"
-            android:maxLines="1"
-            android:paddingStart="@dimen/_9sdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:background="@drawable/et_rounded"
-            style="@style/Widget.AppCompat.EditText"/>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etPincode"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:background="@drawable/et_rounded"
+        android:hint="@string/enter_pincode"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingStart="@dimen/_9sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
 
     <LinearLayout
         android:id="@+id/llDate"

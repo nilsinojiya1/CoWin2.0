@@ -36,7 +36,7 @@ class SlotCheckWorker(context: Context, params: WorkerParameters): Worker(contex
     private fun findByPin(pincode: Int) {
         Log.d(
             TAG,
-            "findByPin: ${Utility.dateToString(Utility.incrementDateByOne(Date()))} $pincode"
+            "findByPin: ${Utility.dateToString(Utility.incrementDateByOne(Date()))} $pincode ${pref.getDose()} ${pref.getVaccine()}"
         )
         CoroutineScope(Dispatchers.IO).launch {
             val response =
