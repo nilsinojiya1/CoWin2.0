@@ -201,7 +201,10 @@ class FindByPinListFragment : Fragment() {
 
     private fun startSlotCheckWorker(){
         val periodicWorkRequest = PeriodicWorkRequest.Builder(SlotCheckWorker::class.java, 15, TimeUnit.MINUTES)
+            .addTag("SLOTJOB")
             .build()
+
+        WorkManager.getInstance(requireContext()).cancelAllWorkByTag("SLOTJOB")
         WorkManager.getInstance(requireContext()).enqueue(periodicWorkRequest)
     }
 }
