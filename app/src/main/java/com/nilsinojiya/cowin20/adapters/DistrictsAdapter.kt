@@ -31,7 +31,7 @@ class DistrictsAdapter(val context: Context, var districts: List<District>) : Ba
         val view: View
         val vh: ItemHolder
         if (convertView == null) {
-            view = inflater.inflate(R.layout.item_spinner_title_only, parent, false)
+            view = inflater.inflate(R.layout.item_spinner, parent, false)
             vh = ItemHolder(view)
             view?.tag = vh
         } else {

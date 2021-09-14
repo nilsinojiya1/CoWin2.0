@@ -18,21 +18,23 @@
         android:gravity="center"
         android:paddingStart="@dimen/_15sdp"
         android:paddingEnd="@dimen/_15sdp"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        tools:listitem="@layout/item_spinner"/>
 
 
     <Spinner
         android:id="@+id/spinnerDistrict"
+        style="@style/SpinnerText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_below="@+id/spinnerState"
         android:layout_marginTop="@dimen/_11sdp"
         android:background="@drawable/et_rounded"
+        android:gravity="center"
         android:paddingStart="@dimen/_15sdp"
         android:paddingEnd="@dimen/_15sdp"
-        android:gravity="center"
-        style="@style/SpinnerText"
-        android:spinnerMode="dialog"/>
+        android:spinnerMode="dialog"
+        tools:listitem="@layout/item_spinner"/>
 
     <LinearLayout
         android:id="@+id/llDate"
