@@ -19,7 +19,7 @@
             android:id="@+id/tvTitle"
             style="@style/TextStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_33sdp"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
             android:text="@string/set_alert"
@@ -59,7 +59,7 @@
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipOff"
@@ -70,7 +70,7 @@
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -95,7 +95,7 @@
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipCOVISHIELD"
@@ -106,7 +106,7 @@
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -131,7 +131,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 style="@style/ChoiseChip"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip2Dose"
@@ -143,7 +143,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 app:chipStrokeColor="@color/selector_chip_stroke"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:textAppearance="@style/ChipsTextAppearance"/>
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -165,7 +165,8 @@
             android:layout_marginTop="@dimen/_9sdp"
             android:layout_marginBottom="@dimen/_9sdp"
             android:layout_marginStart="@dimen/_24sdp"
-            android:layout_marginEnd="@dimen/_24sdp"/>
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:textAppearance="@style/TextStyle"/>
 
         <View
             android:id="@+id/view1"
@@ -179,7 +180,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_height="@dimen/_33sdp"
             android:layout_weight="2"
             android:backgroundTint="#F7F7F7"
             android:orientation="horizontal"

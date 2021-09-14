@@ -12,13 +12,25 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_findByPinFragment"
-            app:destination="@id/findByPinFragment" />
+            app:destination="@id/findByPinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_mobileVerifyFragment"
-            app:destination="@id/mobileVerifyFragment" />
+            app:destination="@id/mobileVerifyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_homeFragment_to_findByStatesFragment"
-            app:destination="@id/findByStatesFragment" />
+            app:destination="@id/findByStatesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/findByPinFragment"
@@ -27,7 +39,11 @@
         tools:layout="@layout/fragment_find_by_pin" >
         <action
             android:id="@+id/action_findByPinFragment_to_findByPinListFragment"
-            app:destination="@id/findByPinListFragment" />
+            app:destination="@id/findByPinListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/mobileVerifyFragment"
@@ -52,6 +68,10 @@
         tools:layout="@layout/fragment_find_by_states" >
         <action
             android:id="@+id/action_findByStatesFragment_to_findByPinListFragment"
-            app:destination="@id/findByPinListFragment" />
+            app:destination="@id/findByPinListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>
