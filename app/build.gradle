@@ -7,14 +7,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        releaseKey {
-            storeFile file('F:\\Documents\\androidKey\\COWIN_2_0_release.jks')
-            storePassword 'Nil@Cowin2.0'
-            keyAlias 'key0'
-            keyPassword 'Nil@Cowin2.0'
-        }
-    }
     compileSdk 30
 
     defaultConfig {
