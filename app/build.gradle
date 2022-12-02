@@ -42,6 +42,9 @@ android {
         properties {
             property "sonar.projectKey", "testProject"
         }
+        sonarqube {
+            androidVariant "debug"
+        }
     }
 
 }
