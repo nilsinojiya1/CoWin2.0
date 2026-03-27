@@ -41,6 +41,7 @@ class CenterAdapter: RecyclerView.Adapter<MainViewHolder>(), Filterable {
         } else {
             holder.binding.tvCost.text = center.fee + " RS."
         }
+        
         if(center.allowAllAge){
             holder.binding.tvAge.text = "18+"
         } else {
