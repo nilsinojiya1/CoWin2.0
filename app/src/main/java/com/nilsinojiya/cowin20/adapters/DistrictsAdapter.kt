@@ -19,6 +19,8 @@ class DistrictsAdapter(val context: Context, var districts: List<District>) : Ba
         return districts.size
     }
 
+    
+
     override fun getItem(position: Int): Any {
         return districts[position]
     }
